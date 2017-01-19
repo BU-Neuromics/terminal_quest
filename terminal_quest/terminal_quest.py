@@ -6,6 +6,8 @@ import shutil
 import string
 import textwrap
 
+import pkg_resources
+
 # clean
 try :
   shutil.rmtree('level0')
@@ -332,7 +334,6 @@ if __name__ == '__main__' :
     ##################################################
     # level 9
     lpath = opj(lpath,level9_dir)
-    print lpath
     os.mkdir(lpath)
     create_mds('level9',lpath)
 
@@ -394,10 +395,6 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
     head_tail_ids = set(range(len(calvinbits))).difference(set(secret_ids))
     head_ids = random.sample(head_tail_ids,3)
     tail_ids = set(head_tail_ids).difference(set(head_ids))
-
-    print secret_ids
-    print head_ids
-    print tail_ids
 
     # do the secret ones
     for cid in secret_ids :
