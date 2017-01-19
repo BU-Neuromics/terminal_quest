@@ -8,6 +8,8 @@ import textwrap
 
 import pkg_resources
 
+opj = os.path.join
+
 # clean
 try :
   shutil.rmtree('level0')
@@ -20,10 +22,7 @@ def copy_md(level,path) :
 
     level_md = '{}.md'.format(level)
 
-    if not os.path.exists(level_md) :
-      open(level_md,'w')
-
-    f = open(level_md)
+    f = pkg_resources.resource_stream(__name__, opj('mds',level_md))
     desc = f.read()
     size = f.tell()
     open(os.path.join(path,level_md),'w').write(desc)
@@ -34,8 +33,6 @@ def create_mds(level,path) :
     copy_md(level,path)
     copy_md('.'+level+'_hint',path)
 
-opj = os.path.join
-
 def rndchr(n) :
     if n > len(string.ascii_letters) :
         rnd = [random.sample(string.ascii_letters,1)[0] for _ in range(n)]
@@ -43,7 +40,7 @@ def rndchr(n) :
         rnd = random.sample(string.ascii_letters,n)
     return ''.join(rnd)
 
-if __name__ == '__main__' :
+def main() :
 
     ##################################################
     # level 0
@@ -425,3 +422,6 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
         open(opj(lpath,fn),'w').write(''.join(_+'\n' for _ in lines))
 
     ##################################################
+
+if __name__ == '__main__' :
+  main()
