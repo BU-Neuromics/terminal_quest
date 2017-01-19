@@ -47,7 +47,7 @@ structure. The levels are as follows:
      across 9 files
   2. use cat to order the files correctly to read the directory name
 
-## Level 6 - grep lines out of a bunch of a file to find secret messages
+## Level 6 - grep lines out of a file to find secret messages
 
   1. `pearls.txt` contains mostly garbage text, but some lines start with SECRET
   2. grepping out these lines contains interesting science-y quotes, and the last
