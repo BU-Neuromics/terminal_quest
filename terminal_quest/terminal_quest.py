@@ -5,6 +5,8 @@ import os
 import shutil
 import string
 import textwrap
+from fabulous.color import bold, yellow, blue
+from fabulous import text
 
 import pkg_resources
 
@@ -14,9 +16,11 @@ opj = os.path.join
 try :
   shutil.rmtree('level0')
 except Exception,e :
-  print e
+  pass
+  #print e
 except Error,e :
-  print e
+  pass
+  #print e
 
 def copy_md(level,path) :
 
@@ -41,6 +45,13 @@ def rndchr(n) :
     return ''.join(rnd)
 
 def main() :
+
+    print
+    print text.Text('Terminal',skew=5)
+    print text.Text('   Quest',skew=5)
+    print
+    print bold(yellow('Your personal quest is being created right now, please wait.'))
+    print
 
     ##################################################
     # level 0
@@ -423,5 +434,23 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
 
     ##################################################
 
+    print bold(yellow('Your quest is ready. It begins in the directory'))
+    print
+    print bold(blue('level0/'))
+    print
+    print bold(yellow('This quest consists of puzzles that you can solve using '
+                 'only the following commands:'))
+    print bold('  - cd')
+    print bold('  - cat')
+    print bold('  - ls')
+    print bold('  - man')
+    print bold('  - grep')
+    print
+    print bold(yellow('and redirection (e.g. cat A.txt B.txt > A_and_B.txt)'))
+    print
+    print bold(yellow('There are ten levels in all.'))
+    print bold(yellow('Good luck.'))
+
 if __name__ == '__main__' :
-  main()
+
+    main()
