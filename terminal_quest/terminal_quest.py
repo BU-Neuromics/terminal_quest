@@ -440,13 +440,13 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
     print
     print bold(yellow('This quest consists of puzzles that you can solve using '
                  'only the following commands:'))
-    print bold('  - cd')
-    print bold('  - cat')
-    print bold('  - ls')
-    print bold('  - man')
-    print bold('  - grep')
+    print bold('  - cd')+' - change the current directory'
+    print bold('  - cat')+' - print a file or files to the screen'
+    print bold('  - ls')+' - list the file names or file information'
+    print bold('  - man')+' - when given another command as its argument, display usage information about the command, e.g. man ls'
+    print bold('  - grep')+' - search for the text in the second argument in the filename passed as the third argument'
     print
-    print bold(yellow('and redirection (e.g. cat A.txt B.txt > A_and_B.txt)'))
+    print bold(yellow('and the redirection character ">" (e.g. cat A.txt B.txt > A_and_B.txt)'))
     print
     print bold(yellow('There are ten levels in all.'))
     print bold(yellow('Good luck.'))
