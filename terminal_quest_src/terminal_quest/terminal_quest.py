@@ -35,7 +35,7 @@ def copy_md(level,path) :
     f = pkg_resources.resource_stream(__name__, opj('mds',level_md))
     desc = f.read()
     size = f.tell()
-    open(os.path.join(path,level_md),'w').write(desc)
+    open(os.path.join(path,level_md),'w').write(desc.decode('utf-8'))
 
     return level_md,desc,size
 
