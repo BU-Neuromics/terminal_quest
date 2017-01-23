@@ -1,3 +1,9 @@
+from __future__ import division
+from __future__ import print_function
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
 from collections import defaultdict
 from glob import glob
 import random
@@ -15,10 +21,10 @@ opj = os.path.join
 # clean
 try :
   shutil.rmtree('level0')
-except Exception,e :
+except Exception as e :
   pass
   #print e
-except Error,e :
+except Error as e :
   pass
   #print e
 
@@ -46,12 +52,12 @@ def rndchr(n) :
 
 def main() :
 
-    print
-    print text.Text('Terminal',skew=5)
-    print text.Text('   Quest',skew=5)
-    print
-    print bold(yellow('Your personal quest is being created right now, please wait.'))
-    print
+    print()
+    print(text.Text('Terminal',skew=5))
+    print(text.Text('   Quest',skew=5))
+    print()
+    print(bold(yellow('Your personal quest is being created right now, please wait.')))
+    print()
 
     ##################################################
     # level 0
@@ -76,7 +82,7 @@ def main() :
     copy_md('.level2_hint',lpath)
 
     # create 49 directories named as random numbers between 0-300
-    paths = random.sample(range(0,300),49)
+    paths = random.sample(list(range(0,300)),49)
     while level2_size in paths :
       paths.remove(level2_size)
       paths.append(random.randint(0,300))
@@ -318,7 +324,7 @@ def main() :
               `'-'`/;;  | |   \ mx
                   ;;;  ,' |    `
                       /   ' """.split('\n')
-    top_suess = suess[:int(len(suess))/2+3]
+    top_suess = suess[:old_div(int(len(suess)),2)+3]
     lines = [rndchr(60) for _ in range(random.randint(1000,1500))]
     open(opj(lpath,'fox.txt'),'w').write(''.join(_+'\n' for _ in top_suess+lines))
 
@@ -399,7 +405,7 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
     linesperbit = 5
     calvinbits = [calvin[_:_+linesperbit] for _ in range(0,len(calvin),linesperbit)]
 
-    secret_ids = random.sample(range(len(calvinbits)),5)
+    secret_ids = random.sample(list(range(len(calvinbits))),5)
     head_tail_ids = set(range(len(calvinbits))).difference(set(secret_ids))
     head_ids = random.sample(head_tail_ids,3)
     tail_ids = set(head_tail_ids).difference(set(head_ids))
@@ -434,22 +440,22 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
 
     ##################################################
 
-    print bold(yellow('Your quest is ready. It begins in the directory'))
-    print
-    print bold(blue('level0/'))
-    print
-    print bold(yellow('This quest consists of puzzles that you can solve using '
-                 'only the following commands:'))
-    print bold('  - cd')+' - change the current directory'
-    print bold('  - cat')+' - print a file or files to the screen'
-    print bold('  - ls')+' - list the file names or file information'
-    print bold('  - man')+' - when given another command as its argument, display usage information about the command, e.g. man ls'
-    print bold('  - grep')+' - search for the text in the second argument in the filename passed as the third argument'
-    print
-    print bold(yellow('and the redirection character ">" (e.g. cat A.txt B.txt > A_and_B.txt)'))
-    print
-    print bold(yellow('There are ten levels in all.'))
-    print bold(yellow('Good luck.'))
+    print(bold(yellow('Your quest is ready. It begins in the directory')))
+    print()
+    print(bold(blue('level0/')))
+    print()
+    print(bold(yellow('This quest consists of puzzles that you can solve using '
+                 'only the following commands:')))
+    print(bold('  - cd')+' - change the current directory')
+    print(bold('  - cat')+' - print a file or files to the screen')
+    print(bold('  - ls')+' - list the file names or file information')
+    print(bold('  - man')+' - when given another command as its argument, display usage information about the command, e.g. man ls')
+    print(bold('  - grep')+' - search for the text in the second argument in the filename passed as the third argument')
+    print()
+    print(bold(yellow('and the redirection character ">" (e.g. cat A.txt B.txt > A_and_B.txt)')))
+    print()
+    print(bold(yellow('There are ten levels in all.')))
+    print(bold(yellow('Good luck.')))
 
 if __name__ == '__main__' :
 
