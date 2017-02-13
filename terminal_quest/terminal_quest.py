@@ -324,7 +324,7 @@ def main() :
               `'-'`/;;  | |   \ mx
                   ;;;  ,' |    `
                       /   ' """.split('\n')
-    top_suess = suess[:old_div(int(len(suess)),2)+3]
+    top_suess = suess[:old_div(len(suess),2)+3]
     lines = [rndchr(60) for _ in range(random.randint(1000,1500))]
     open(opj(lpath,'fox.txt'),'w').write(''.join(_+'\n' for _ in top_suess+lines))
 
@@ -402,12 +402,21 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
                         $o       $$  $o    o$
                          \"$o   o$$    \"\"$$$\"
                            \"\"\"\"\"\" """.split('\n')
-    linesperbit = 5
+
+    # add the line number to the beginning of each line to make it easier
+    for i in range(len(calvin)) :
+      calvin[i] = '{0:02d}: {1}'.format(i,calvin[i])
+
+    linesperbit = 10
     calvinbits = [calvin[_:_+linesperbit] for _ in range(0,len(calvin),linesperbit)]
 
-    secret_ids = random.sample(list(range(len(calvinbits))),5)
+    num_secret = int(len(calvinbits)/2)
+    secret_ids = random.sample(list(range(len(calvinbits))),num_secret)
     head_tail_ids = set(range(len(calvinbits))).difference(set(secret_ids))
-    head_ids = random.sample(head_tail_ids,3)
+
+    num_heads = int(num_secret/2)
+    head_ids = random.sample(head_tail_ids,num_heads)
+
     tail_ids = set(head_tail_ids).difference(set(head_ids))
 
     # do the secret ones
@@ -452,6 +461,7 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
     print(bold('  - man')+' - when given another command as its argument, display usage information about the command, e.g. man ls')
     print(bold('  - grep')+' - search for the text in the second argument in the filename passed as the third argument')
     print()
+    print(bold(yellow('the glob character "*" (e.g. ls *.txt),')))
     print(bold(yellow('and the redirection character ">" (e.g. cat A.txt B.txt > A_and_B.txt)')))
     print()
     print(bold(yellow('There are ten levels in all.')))
