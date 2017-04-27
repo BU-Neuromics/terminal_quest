@@ -1,6 +1,8 @@
 # Changelog
 
 ## [ Unreleased ]
+### Added
+  - this changelog!
 ### Changed
   - fixed incorrect conda package name
 
