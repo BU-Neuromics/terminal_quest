@@ -1,0 +1,25 @@
+package:
+  name: terminal_quest
+  version: "dev"
+
+source:
+  path: ../../
+
+requirements:
+  build:
+    - python
+    - future
+    - fabulous
+  run:
+    - python
+    - future
+    - fabulous
+
+about:
+  home: https://bitbucket.org/bubioinformaticshub/terminal_quest
+  license: MIT
+  license_file: LICENSE
+
+build:
+  script: python setup.py install
+  number: 0
