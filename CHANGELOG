@@ -1,0 +1,9 @@
+# Changelog
+
+## [ Unreleased ]
+### Changed
+  - fixed incorrect conda package name
+
+## [ 1.0 ] - 2017-04-27
+### Added
+  - er'thing, first release
