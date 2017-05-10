@@ -457,6 +457,8 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
                  'only the following commands:')))
     print(bold('  - cd')+' - change the current directory')
     print(bold('  - cat')+' - print a file or files to the screen')
+    print(bold('  - head')+' - print just the first lines of a file or files to the screen')
+    print(bold('  - tail')+' - print just the last lines of a file or files to the screen')
     print(bold('  - ls')+' - list the file names or file information')
     print(bold('  - man')+' - when given another command as its argument, display usage information about the command, e.g. man ls')
     print(bold('  - grep')+' - search for the text in the second argument in the filename passed as the third argument')
