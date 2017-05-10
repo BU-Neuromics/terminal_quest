@@ -1,6 +1,6 @@
 # Introduction
 
-`terminal_quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification) introduction to basic command line navigation and file manipulation skills. It is implemented in the python programming language but requires no programming other than entering commands on a posix-compliant operating system command line interface.
+`terminal_quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification) introduction to basic command line navigation and file manipulation skills. It is implemented in the python programming language but requires no programming other than entering commands on a command line. 
 
 `terminal_quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file globbing (`*` character), and output redirection (`>` character).
 
@@ -8,7 +8,9 @@
 
 ## Installation and Use ##
 
-The easiest way to install `terminal_quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
+### Anaconda ###
+
+The recommended way to install `terminal_quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
 
 ```
 conda create -n terminal-quest -c bubhub python=3.5 terminal-quest
@@ -21,4 +23,28 @@ source activate terminal-quest
 terminal_quest
 ```
 
-The second command will display a festive and colorful splash message while it creates your own personal quest and provides some instructions and hints on how to start.
+The second command will display a festive and colorful splash message while it creates your own personal quest and provides some instructions and hints on how to start. **NB:** the anaconda method only currently works on linux systems.
+
+### Manual Installation ###
+
+If you do not have access to anaconda, you may also install this package manually. You can either clone this repo to your local machine with:
+
+```
+git clone https://bitbucket.org/bubioinformaticshub/terminal_quest.git
+```
+
+or simply download the most recent stable version from [the downloads page](https://bitbucket.org/bubioinformaticshub/terminal_quest/downloads/?tab=tags).
+
+Once downloaded (and expanded, if downloaded as an archive), open a terminal and run from within the source directory:
+
+```
+python setup.py install
+terminal_quest
+```
+
+### Dependencies ###
+
+This package uses the following non-standard python packages:
+
+* [future](https://pypi.python.org/pypi/future)
+* [fabulous](https://pypi.python.org/pypi/fabulous)
