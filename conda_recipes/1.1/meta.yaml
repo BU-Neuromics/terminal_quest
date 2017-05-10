@@ -1,0 +1,26 @@
+package:
+  name: terminal-quest
+  version: "1.1"
+
+source:
+  git_url: https://bitbucket.org/bubioinformaticshub/terminal_quest
+  git_rev: "1.1"
+
+requirements:
+  build:
+    - python
+    - future
+    - fabulous
+  run:
+    - python
+    - future
+    - fabulous
+
+about:
+  home: https://bitbucket.org/bubioinformaticshub/terminal_quest
+  license: MIT
+  license_file: LICENSE
+
+build:
+  script: python setup.py install
+  number: 0
