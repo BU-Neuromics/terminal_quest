@@ -4,7 +4,7 @@
 
 `terminal_quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file globbing (`*` character), and output redirection (`>` character).
 
-![terminal_quest.png](https://bitbucket.org/repo/goGkbA/images/153806769-terminal_quest.png)
+![terminal_quest.png](terminal_quest.png)
 
 ## Installation and Use ##
 
