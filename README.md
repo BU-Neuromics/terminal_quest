@@ -1,8 +1,8 @@
-# `terminal_quest` #
+# Introduction
 
 `terminal_quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification) introduction to basic command line navigation and file manipulation skills. It is implemented in the python programming language but requires no programming other than entering commands on a posix-compliant operating system command line interface.
 
-`terminal_quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, file globbing (`*` character), and output redirection (`>` character).
+`terminal_quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file globbing (`*` character), and output redirection (`>` character).
 
 ![terminal_quest.png](https://bitbucket.org/repo/goGkbA/images/153806769-terminal_quest.png)
 
