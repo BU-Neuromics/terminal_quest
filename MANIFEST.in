@@ -1,0 +1,3 @@
+include VERSION README.md
+recursive-include terminal_quest *.py *.md
+

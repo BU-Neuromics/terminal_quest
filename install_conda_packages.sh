@@ -1,1 +1,1 @@
-conda install -c bubhub fabulous future
+conda install -c bubhub fabulous future twine
