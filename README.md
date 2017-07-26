@@ -8,9 +8,17 @@
 
 ## Installation and Use ##
 
+### pypi ###
+
+You can install `terminal_quest` using `pip`:
+
+```
+pip install terminal-quest
+```
+
 ### Anaconda ###
 
-The recommended way to install `terminal_quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
+An alternative way to install `terminal_quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
 
 ```
 conda create -n terminal-quest -c bubhub python=3.5 terminal-quest
