@@ -1,8 +1,8 @@
 # Introduction
 
-`terminal_quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification) introduction to basic command line navigation and file manipulation skills. It is implemented in the python programming language but requires no programming other than entering commands on a command line. 
+`terminal-quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification) introduction to basic command line navigation and file manipulation skills. It is implemented in the python programming language but requires no programming other than entering commands on a command line. 
 
-`terminal_quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file globbing (`*` character), and output redirection (`>` character).
+`terminal-quest` is a series of puzzles that can be solved with only the commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file globbing (`*` character), and output redirection (`>` character).
 
 ![terminal_quest.png](terminal_quest.png)
 
@@ -10,7 +10,7 @@
 
 ### pypi ###
 
-You can install `terminal_quest` using `pip`:
+You can install `terminal-quest` using `pip`:
 
 ```
 pip install terminal-quest
@@ -18,7 +18,7 @@ pip install terminal-quest
 
 ### Anaconda ###
 
-An alternative way to install `terminal_quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
+An alternative way to install `terminal-quest` is by using [anaconda](https://anaconda.org). After installing anaconda, open a terminal and run:
 
 ```
 conda create -n terminal-quest -c bubhub python=3.5 terminal-quest
@@ -31,7 +31,7 @@ source activate terminal-quest
 terminal_quest
 ```
 
-The second command will display a festive and colorful splash message while it creates your own personal quest and provides some instructions and hints on how to start. **NB:** the anaconda method only currently works on linux systems.
+Note that the executable is `terminal_quest` not `terminal-quest`! The second command will display a festive and colorful splash message while it creates your own personal quest and provides some instructions and hints on how to start. **NB:** the anaconda method only currently works on linux systems.
 
 ### Manual Installation ###
 
