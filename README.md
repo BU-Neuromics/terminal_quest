@@ -56,3 +56,4 @@ This package uses the following non-standard python packages:
 
 * [future](https://pypi.python.org/pypi/future)
 * [fabulous](https://pypi.python.org/pypi/fabulous)
+* [pillow](https://python-pillow.org/)
