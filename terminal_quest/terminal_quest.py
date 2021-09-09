@@ -3,6 +3,8 @@ from __future__ import print_function
 from builtins import zip
 from builtins import str
 from builtins import range
+import getpass
+import hashlib
 from past.utils import old_div
 from collections import defaultdict
 from glob import glob
@@ -10,13 +12,30 @@ import random
 import os
 import shutil
 import string
+import sys
 import textwrap
 from fabulous.color import bold, yellow, blue
 from fabulous import text
 
+from .pizzazz import fini
+
 import pkg_resources
 
 opj = os.path.join
+
+# the final level gives the user a code based on their username
+user = getpass.getuser()
+user_code = hashlib.sha1(user.encode()).hexdigest()[:10]
+
+if len(sys.argv) > 1 :
+    if sys.argv[1] == 'thosetastycodez' :
+        print(user_code)
+    elif sys.argv[1] == user_code :
+        fini()
+    else :
+        print(bold("This is not the code you're looking for."))
+        print(bold("Try again, or get to the last level first."))
+    sys.exit(0)
 
 # clean
 try :
@@ -110,6 +129,9 @@ def main() :
       open(opj(lpath,rnd_dir,'.level4_hint.md'),'w').write(
         "# other directories might have what you seek, but not this one"
       )
+      open(opj(lpath,rnd_dir,'you-won.md'),'w').write(
+        "just kidding, no you didn't, but you did find a SECRET"
+      )
 
     # use the last random directory as the real one
     real_fns = [rndchr(6).upper()+'_{}_SECRET' for _ in range(len(rnd_dir))]
@@ -157,6 +179,9 @@ def main() :
         open(opj(lpath,rnd_dir,'.level5_hint.md'),'w').write(
           "# guessing? I *guess* no one's coming?"
         )
+        open(opj(lpath,rnd_dir,'you-won-again.md'),'w').write(
+          "nope, just kidding again, but again you did find a SECRET"
+        )
 
     ##################################################
 
@@ -191,6 +216,9 @@ def main() :
         )
         open(opj(lpath,rnd_dir,'.level6_hint.md'),'w').write(
           "# Informed decision-making comes from a long tradition of guessing and then blaming others for inadequate results. - Scott Adams"
+        )
+        open(opj(lpath,rnd_dir,'ding-ding-ding-ding.md'),'w').write(
+          "that's the sound of you winning...or just guessing at where the SECRET s are..."
         )
 
     ##################################################
@@ -233,6 +261,10 @@ def main() :
         open(opj(lpath,rnd_dir,'.level6_hint.md'),'w').write(
           "# by now, you should know this strategy doesn't work"
         )
+        open(opj(lpath,rnd_dir,'is-this-getting-old-yet.md'),'w').write(
+          "there's no SECRET to this, guessing doesn't work"
+        )
+
     ##################################################
 
     ##################################################
@@ -278,6 +310,10 @@ def main() :
         open(opj(lpath,rnd_dir,'.level7_hint.md'),'w').write(
           "# I've got a lovely bunch of coconuts, diddle dee dee"
         )
+        open(opj(lpath,rnd_dir,'on-a-scale-of-1-to-10.md'),'w').write(
+          "YOU are a SECRET 11"
+        )
+
     level8_dir = '.python'
     ##################################################
 
@@ -341,6 +377,9 @@ def main() :
         open(opj(lpath,rnd_dir,'.level7_hint.md'),'w').write(
           "# I do not like them, Sam I am, I do not like bad guesses and spam"
         )
+        open(opj(lpath,rnd_dir,'stars-on-thars.md'),'w').write(
+          "but of course all the sneeches have SECRET s in their breeches"
+        )
 
     level9_dir = '.bnattG'
     ##################################################
@@ -351,68 +390,48 @@ def main() :
     os.mkdir(lpath)
     create_mds('level9',lpath)
 
-    calvin = """
-                                    oooo   ooo
-                                   $   $  $   $
-                                   \"o  $ $  o\"\"
-                                     o  \"   \"ooooo
-                                 oo \"\"           o$
-                   o            o            oo  \"
-                  $$             $o$\"\"$o  ooo$
-                  $\"$          o $    \"$  $
-        o$o       $ \"$         $ $     $ $
-         $$$o     $$ \"$       o$ $     o $o
-         \"$ \"\"o   \"$   \"o     $$ \"o     o\"
-     $o   $$   \"o  $     \"oo  $\"  $   o$\"
-      \"$   $o    \"o$$       \"o$    $o$\" oo$
-        \"o \"$o                     \"$o $\"$$
-          \"        oo$$$$$$$oo        $oo$$\"\"      o\" o
- \"\"\"\"\"\"\"\"\"      o$$$$$$$$$$$\"$o             o\"\"\"$o$$  o$
-       ooo$$$\"o$$$$$$$$$$$$$$ \"$o    o   o$$$o   $ $ o$
-    o$$$$$$$$$$$$$$$$$$$$$$$$    \"oo  o      \"\"o  \"$ $
-   $$$$$$$$$$$$$$$$$$$$$$$$$$      \"$o   o$$\"\"\"$     \" oo\"\"o
-o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
-     \"$$$$$$$$\"\"\"\"$\"\"$$$\"\"              \"$oo$\"\"$o     o$\"\"\"
-      $$$$$$$\"                           $\"\"\"\"$\"  o\"\"\"\"
-       $\"\"\"\"\"$ooooo        ooooo$$$$$$$     o$\" o\"
-        $     \"\"\"\" oooo$$$$$$$$$$$$$$\"     $\"  o\"
-      oo$   oooo$$$$$$$$$$$\"\"\"\"\"$$$$\"    o$\" o$\"
-    \"$ $o$$$$$$$$$$$$$\"\"$     o$$$\"oooo$\"  o\"
-      \"o$ \"$$$$$$$$$$$$         $$o$\"$$$   $\"
-        \"$  \"\"$$$$$$$$$        o$\"$$$ \"$$o$$
-          \"o   \"\"$$$$$$o     o$$$$ \"\"$o \"\"\"$
-            \"$o    \"\"$$$$$$o\"  o$$$$oo o$$$$
-               \"\"$oo     $$\" \"$$$\"\" ooooooo$
-                    \"\"\"\"$\"  o$\"   oo$$$$$\"\"$$
-                       $ oo$\"  o$$$$$\"\"  ooo$
-                       $o$\"  o$$$$\"  oo$$$$$$$o
-                        $$ o$$$\"  o$$$$$$\"\"\"\"\"$o
-                         \"o$$\"  o$$$$\"\"  o$$$$$$$o
-                           \"$oo$$$$\"  o$$$$$\"\"\" o$o
-                             \"$$$\" oo$$$\"\" oo$$$$$$$
-                          ooooo$oo$$$\"\" oo$$$$\"\"\"$$\"\"
-                         $\"oooo $$$\" o$$$$\"\"      $
-                       o$\"o$   $$\"oo$$\"\"       \" o$
-                       $ o$$o  $$o$$\"          oo$$
-                       $ $$$$  $$$$$$$$$$$$$$$$$$$$
-                       $ $$$$  $$$$$$$$$$$$$$$$$$$$\"
-                       $ $$$$  $$$$$$$$$$$$$$$$$$$$
-                       $ \"\"    \"\"$$$$$$$$$\"\"\"$\"\"\"\"
-                       $o         $\"$\"    \" $\"
-                        $o       $$  $o    o$
-                         \"$o   o$$    \"\"$$$\"
-                           \"\"\"\"\"\" """.split('\n')
+    scroll = """
+         __________________
+    ()==(                 (@==()
+         '_________________'|
+           |     your       |
+           |    secret      |
+           |     code       |
+           |      is:       |
+           |        {a}       |
+           |        {b}       |
+           |        {c}       |
+           |        {d}       |
+           |        {e}       |
+           |        {f}       |
+           |        {g}       |
+           |        {h}       |
+           |        {i}       |
+           |        {j}       |
+           |                |
+           |      run       |
+           | terminal_quest |
+           |   again with   |
+           |  this code as  |
+           |    its only    |
+           |    argument    |
+           |   and prosper  |
+         __)________________|
+    ()==(                 (@==()
+         '----------------'
+                              PjP
+    """.format(**{i:c for i,c in zip('abcdefghij',user_code)}).split('\n')
 
     # add the line number to the beginning of each line to make it easier
-    for i in range(len(calvin)) :
-      calvin[i] = '{0:02d}: {1}'.format(i,calvin[i])
+    for i in range(len(scroll)) :
+      scroll[i] = '{0:02d}: {1}'.format(i,scroll[i])
 
-    linesperbit = 10
-    calvinbits = [calvin[_:_+linesperbit] for _ in range(0,len(calvin),linesperbit)]
+    linesperbit = 5
+    scrollbits = [scroll[_:_+linesperbit] for _ in range(0,len(scroll),linesperbit)]
 
-    num_secret = int(len(calvinbits)/2)
-    secret_ids = random.sample(list(range(len(calvinbits))),num_secret)
-    head_tail_ids = set(range(len(calvinbits))).difference(set(secret_ids))
+    num_secret = int(len(scrollbits)/2)
+    secret_ids = random.sample(list(range(len(scrollbits))),num_secret)
+    head_tail_ids = set(range(len(scrollbits))).difference(set(secret_ids))
 
     num_heads = int(num_secret/2)
     head_ids = random.sample(head_tail_ids,num_heads)
@@ -421,31 +440,34 @@ o\"\"\"\"$$$$$$$$$$$$$$$$$$$$$$\"         \"\"$o\"$o          \"   o$
 
     # do the secret ones
     for cid in secret_ids :
-        calvinbit = calvinbits[cid]
+        scrollbit = scrollbits[cid]
         lines = []
         lines.extend([rndchr(60) for _ in range(random.randint(300,1000))])
-        lines.extend(['SECRET    '+_ for _ in calvinbit])
+        lines.extend(['SECRET    '+_ for _ in scrollbit])
         lines.extend([rndchr(60) for _ in range(random.randint(300,1000))])
         fn = rndchr(6)+'.txt'
         open(opj(lpath,fn),'w').write(''.join(_+'\n' for _ in lines))
 
     # do the heads
     for cid in head_ids :
-        calvinbit = calvinbits[cid]
+        scrollbit = scrollbits[cid]
         lines = []
-        lines.extend(['          '+_ for _ in calvinbit])
+        lines.extend(['          '+_ for _ in scrollbit])
         lines.extend([rndchr(60) for _ in range(random.randint(300,1000))])
         fn = rndchr(6)+'.txt'
         open(opj(lpath,fn),'w').write(''.join(_+'\n' for _ in lines))
 
     # do the tails
     for cid in tail_ids :
-        calvinbit = calvinbits[cid]
+        scrollbit = scrollbits[cid]
         lines = []
         lines.extend([rndchr(60) for _ in range(random.randint(300,1000))])
-        lines.extend(['          '+_ for _ in calvinbit])
+        lines.extend(['          '+_ for _ in scrollbit])
         fn = rndchr(6)+'.txt'
         open(opj(lpath,fn),'w').write(''.join(_+'\n' for _ in lines))
+
+    # diminish satisfaction for those who think they are clever and use grep -R SECRET
+    open(opj(lpath,'.listen.md'),'w').write("ok, so if you figured out how to use grep -R SECRET and skip right to the end, that's great, but do you *really* feel satisfied?")
 
     ##################################################
 
