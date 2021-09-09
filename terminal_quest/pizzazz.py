@@ -120,3 +120,7 @@ def fini():
         banner()
         sleep(10)
         move(0,term.height)
+        
+        print(bold('if you enjoyed terminal quest, why not try the sequel: terminal temple?'))
+        print(bold('https://bitbucket.org/bucab/terminal_temple'))
+        print(bold('it almost certainly could be as good!'))
