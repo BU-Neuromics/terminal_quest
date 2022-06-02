@@ -9,10 +9,11 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='terminal-quest'
-      ,url='https://github.com/neuromics/terminal_quest'
+      ,url='https://github.com/BU-Neuromics/terminal_quest'
       ,version=version
       ,description='Cute little puzzle for teaching basic command line usage'
       ,long_description=long_description
+      ,long_description_content_type="text/markdown"
       ,author='Adam Labadorf'
       ,author_email='labadorf@bu.edu'
       ,license='MIT'

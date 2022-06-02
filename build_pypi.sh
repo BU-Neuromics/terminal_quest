@@ -8,4 +8,4 @@ python setup.py sdist bdist_wheel
 
 echo $TWINE_USERNAME
 
-twine upload --verbose -u $TWINE_USERNAME -p "$TWINE_PASSWORD" dist/*
+twine upload --verbose --skip-existing -u $TWINE_USERNAME -p "$TWINE_PASSWORD" dist/*
