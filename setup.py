@@ -2,10 +2,17 @@
 
 from setuptools import setup, find_packages
 
+with open('VERSION', 'r', encoding='utf-8') as f :
+    version = f.read()
+
+with open('Readme.md', 'r', encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(name='terminal-quest'
-      ,url='https://bitbucket.org/bubioinformaticshub/terminal_quest/overview'
-      ,version=open('VERSION').read().strip()
+      ,url='https://github.com/neuromics/terminal_quest'
+      ,version=version
       ,description='Cute little puzzle for teaching basic command line usage'
+      ,long_description=long_description
       ,author='Adam Labadorf'
       ,author_email='labadorf@bu.edu'
       ,license='MIT'
