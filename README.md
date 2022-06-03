@@ -48,3 +48,8 @@ This package uses the following non-standard python packages:
 * [future](https://pypi.python.org/pypi/future)
 * [fabulous](https://pypi.python.org/pypi/fabulous)
 * [pillow](https://python-pillow.org/)
+
+## terminal temple
+
+If you enjoyed terminal quest, be sure to check out the sequel
+[terminal temple](https://bu-neuromics.github.io/terminal_temple/)
