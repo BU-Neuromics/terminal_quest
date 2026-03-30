@@ -1,25 +1,30 @@
 from itertools import product, cycle
-from fabulous import text
-from fabulous.color import *
-from fabulous.utils import TerminalInfo
 import random
 import sys
 import termios
-import tty
 from time import sleep
 
-flags = termios.tcgetattr(sys.stdout)
+from .compat import TerminalInfo, Text, bg256, bold, green
+
+try:
+    _terminal_fd = sys.stdin.fileno()
+    _flags = termios.tcgetattr(_terminal_fd) if sys.stdin.isatty() else None
+except (AttributeError, OSError, termios.error):
+    _terminal_fd = None
+    _flags = None
 
 term = TerminalInfo()
 
 def set_echo_and_icanon(flag) :
+    if _flags is None or _terminal_fd is None:
+        return
     if flag :
-        new = flags.copy()
+        new = _flags.copy()
         new[3] = new[3] | termios.ECHO | termios.ICANON
     else :
-        new = flags.copy()
+        new = _flags.copy()
         new[3] = new[3] & ~termios.ECHO & ~termios.ICANON
-    termios.tcsetattr(sys.stdout, termios.TCSANOW, new)
+    termios.tcsetattr(_terminal_fd, termios.TCSANOW, new)
     pass
 
 def write(o) :
@@ -73,9 +78,9 @@ def banner() :
     voffset = 4
     rect(0,int(term.height/voffset-2),term.width,int(term.height/voffset+26),'#000')
     move(0,int(term.height/voffset))
-    write(text.Text(' terminal',skew=5,shadow=True,color=banner_color))
+    write(Text(' terminal',skew=5,shadow=True,color=banner_color))
     move(0,int(term.height/voffset+12))
-    write(text.Text('  quest',skew=5,shadow=True,color=banner_color))
+    write(Text('  quest',skew=5,shadow=True,color=banner_color))
 
 def dazzle() :
 
@@ -112,15 +117,16 @@ def fini():
     type_text(green("\n\nDAZZLED"),speed=0.01)
     sleep(1)
 
-    set_echo_and_icanon(0)
-    try :
-        dazzle()
-    finally :
-        set_echo_and_icanon(1)
-        banner()
-        sleep(10)
-        move(0,term.height)
-        
-        print(bold('if you enjoyed terminal quest, why not try the sequel: terminal temple?'))
-        print(bold('https://bitbucket.org/bucab/terminal_temple'))
-        print(bold('it almost certainly could be as good!'))
+    if _flags is not None:
+        set_echo_and_icanon(0)
+        try :
+            dazzle()
+        finally :
+            set_echo_and_icanon(1)
+            banner()
+            sleep(10)
+            move(0,term.height)
+
+    print(bold('if you enjoyed terminal quest, why not try the sequel: terminal temple?'))
+    print(bold('https://bitbucket.org/bucab/terminal_temple'))
+    print(bold('it almost certainly could be as good!'))

@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
+from pathlib import Path
+
 from setuptools import setup, find_packages
 
-with open('VERSION', 'r', encoding='utf-8') as f :
-    version = f.read()
+ROOT = Path(__file__).parent
 
-with open('README.md', 'r', encoding='utf-8') as f:
-    long_description = f.read()
+version = (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
+long_description = (ROOT / 'README.md').read_text(encoding='utf-8')
 
 setup(name='terminal-quest'
       ,url='https://github.com/BU-Neuromics/terminal_quest'
@@ -19,12 +20,8 @@ setup(name='terminal-quest'
       ,license='MIT'
       ,packages=find_packages()
       ,package_data={'terminal_quest': ['mds/*','mds/.level*']}
-      ,python_requires='>=2.6, >=3'
-      ,install_requires=[
-        'future'
-        ,'fabulous'
-        ,'pillow'
-      ]
+      ,python_requires='>=3.9'
+      ,install_requires=[]
       ,entry_points={
         'console_scripts': [
           'terminal_quest=terminal_quest:main'
@@ -46,12 +43,12 @@ setup(name='terminal-quest'
 
           # Specify the Python versions you support here. In particular, ensure
           # that you indicate whether you support Python 2, Python 3 or both.
-          'Programming Language :: Python :: 2',
-          'Programming Language :: Python :: 2.6',
-          'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.2',
-          'Programming Language :: Python :: 3.3',
-          'Programming Language :: Python :: 3.4',
+          'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
+          'Programming Language :: Python :: 3.11',
+          'Programming Language :: Python :: 3.12',
+          'Programming Language :: Python :: 3.13',
+          'Programming Language :: Python :: 3.14',
       ]
      )

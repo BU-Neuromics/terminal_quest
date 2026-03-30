@@ -4,3 +4,5 @@
 build
 dist
 twine_creds.sh
+.venv/
+level0/
