@@ -1,25 +1,16 @@
-from __future__ import division
 from __future__ import print_function
-from builtins import zip
-from builtins import str
-from builtins import range
 import getpass
 import hashlib
-from past.utils import old_div
-from collections import defaultdict
-from glob import glob
+from importlib import resources
 import random
 import os
 import shutil
 import string
 import sys
 import textwrap
-from fabulous.color import bold, yellow, blue
-from fabulous import text
 
 from .pizzazz import fini
-
-import pkg_resources
+from .compat import Text, blue, bold, yellow
 
 opj = os.path.join
 
@@ -38,25 +29,20 @@ if len(sys.argv) > 1 :
     sys.exit(0)
 
 # clean
-try :
-  shutil.rmtree('level0')
-except Exception as e :
-  pass
-  #print e
-except Error as e :
-  pass
-  #print e
+try:
+    shutil.rmtree("level0")
+except OSError:
+    pass
 
 def copy_md(level,path) :
 
     level_md = '{}.md'.format(level)
+    desc = resources.files("terminal_quest").joinpath("mds", level_md).read_text(encoding="utf-8")
+    size = len(desc.encode("utf-8"))
+    with open(os.path.join(path, level_md), "w", encoding="utf-8") as handle:
+        handle.write(desc)
 
-    f = pkg_resources.resource_stream(__name__, opj('mds',level_md))
-    desc = f.read()
-    size = f.tell()
-    open(os.path.join(path,level_md),'w').write(desc.decode('utf-8'))
-
-    return level_md,desc,size
+    return level_md, desc, size
 
 def create_mds(level,path) :
     copy_md(level,path)
@@ -72,8 +58,8 @@ def rndchr(n) :
 def main() :
 
     print()
-    print(text.Text('Terminal',skew=5))
-    print(text.Text('   Quest',skew=5))
+    print(Text('Terminal',skew=5))
+    print(Text('   Quest',skew=5))
     print()
     print(bold(yellow('Your personal quest is being created right now, please wait.')))
     print()
@@ -101,10 +87,7 @@ def main() :
     copy_md('.level2_hint',lpath)
 
     # create 49 directories named as random numbers between 0-300
-    paths = random.sample(list(range(0,300)),49)
-    while level2_size in paths :
-      paths.remove(level2_size)
-      paths.append(random.randint(0,300))
+    paths = random.sample([value for value in range(0,300) if value != level2_size],49)
     paths = [str(_) for _ in paths]
     for path in paths:
       os.mkdir(os.path.join(lpath,path))
@@ -133,10 +116,15 @@ def main() :
         "just kidding, no you didn't, but you did find a SECRET"
       )
 
-    # use the last random directory as the real one
-    real_fns = [rndchr(6).upper()+'_{}_SECRET' for _ in range(len(rnd_dir))]
+    # keep the real directory stable instead of relying on the last loop value
+    level4_dir = '.' + rndchr(6)
+    while os.path.exists(opj(lpath, level4_dir)):
+        level4_dir = '.' + rndchr(6)
+    os.mkdir(opj(lpath, level4_dir))
+
+    real_fns = [rndchr(6).upper()+'_{}_SECRET' for _ in range(len(level4_dir))]
     real_fns.sort()
-    real_fns = [_1.format(_2) for _1, _2 in zip(real_fns,rnd_dir)]
+    real_fns = [_1.format(_2) for _1, _2 in zip(real_fns, level4_dir)]
 
     # create a bunch of files with the pattern [A-Z]{6}_[a-z]_[A-Z]{6}
     fake_fns = [rndchr(6).upper()+'_x_'+rndchr(6).upper() for _ in range(1000)]
@@ -146,8 +134,7 @@ def main() :
 
     ##################################################
     # level 4
-    lpath = opj(lpath,rnd_dir)
-    # this directory was already created in the previous step
+    lpath = opj(lpath,level4_dir)
     create_mds('level4',lpath)
 
     level5_dir = '.'+rndchr(6)
@@ -360,7 +347,7 @@ def main() :
               `'-'`/;;  | |   \ mx
                   ;;;  ,' |    `
                       /   ' """.split('\n')
-    top_suess = suess[:old_div(len(suess),2)+3]
+    top_suess = suess[: len(suess) // 2 + 3]
     lines = [rndchr(60) for _ in range(random.randint(1000,1500))]
     open(opj(lpath,'fox.txt'),'w').write(''.join(_+'\n' for _ in top_suess+lines))
 
@@ -434,7 +421,7 @@ def main() :
     head_tail_ids = set(range(len(scrollbits))).difference(set(secret_ids))
 
     num_heads = int(num_secret/2)
-    head_ids = random.sample(head_tail_ids,num_heads)
+    head_ids = random.sample(sorted(head_tail_ids),num_heads)
 
     tail_ids = set(head_tail_ids).difference(set(head_ids))
 

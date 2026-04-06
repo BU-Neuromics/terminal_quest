@@ -2,8 +2,8 @@
 
 `terminal-quest` is a [gamified](https://en.wikipedia.org/wiki/Gamification)
 introduction to basic command line navigation and file manipulation skills. It
-is implemented in the python programming language but requires no programming
-other than entering commands on a command line. 
+is implemented in Python but requires no programming beyond entering commands on
+the command line.
 
 `terminal-quest` is a series of puzzles that can be solved with only the
 commands **cd**, **ls**, **man**, **cat**, **head**, **tail**, **grep**, file
@@ -15,16 +15,18 @@ globbing (`*` character), and output redirection (`>` character).
 
 ### pypi ###
 
-You can install `terminal-quest` using `pip`:
+Create and activate a virtual environment, then install with `pip`:
 
 ```
-pip install terminal-quest
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
 ```
 
 ### Manual Installation ###
 
-If you do not have access to anaconda, you may also install this package
-manually. You can either clone this repo to your local machine with:
+If you just want to play from a clone of this repository, you do not need to
+install any third-party packages. Clone the repo:
 
 ```
 git clone https://github.com/BU-Neuromics/terminal_quest
@@ -37,17 +39,14 @@ Once downloaded (and expanded, if downloaded as an archive), open a terminal
 and run from within the source directory:
 
 ```
-python setup.py install
-terminal_quest
+python3 -m venv .venv
+source .venv/bin/activate
+python -m terminal_quest
 ```
 
 ### Dependencies ###
 
-This package uses the following non-standard python packages:
-
-* [future](https://pypi.python.org/pypi/future)
-* [fabulous](https://pypi.python.org/pypi/fabulous)
-* [pillow](https://python-pillow.org/)
+Current versions run with the Python standard library only.
 
 ## terminal temple
 
