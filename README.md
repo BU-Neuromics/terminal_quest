@@ -13,40 +13,17 @@ globbing (`*` character), and output redirection (`>` character).
 
 ## Installation and Use ##
 
-### pypi ###
-
-Create and activate a virtual environment, then install with `pip`:
+Install from [PyPI](https://pypi.org/project/terminal-quest/) with `pip`:
 
 ```
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install .
+pip install terminal-quest
 ```
 
-### Manual Installation ###
-
-If you just want to play from a clone of this repository, you do not need to
-install any third-party packages. Clone the repo:
+Then run:
 
 ```
-git clone https://github.com/BU-Neuromics/terminal_quest
+terminal_quest
 ```
-
-or simply download the most recent stable version from [the downloads
-page](https://github.com/BU-Neuromics/terminal_quest/tags).
-
-Once downloaded (and expanded, if downloaded as an archive), open a terminal
-and run from within the source directory:
-
-```
-python3 -m venv .venv
-source .venv/bin/activate
-python -m terminal_quest
-```
-
-### Dependencies ###
-
-Current versions run with the Python standard library only.
 
 ## terminal temple
 
