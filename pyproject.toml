@@ -1,3 +1,47 @@
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "terminal-quest"
+dynamic = ["version"]
+description = "Cute little puzzle for teaching basic command line usage"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Adam Labadorf", email = "labadorf@bu.edu"},
+]
+requires-python = ">=3.9"
+dependencies = ["pyfiglet"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Topic :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[project.urls]
+Homepage = "https://github.com/BU-Neuromics/terminal_quest"
+
+[project.scripts]
+terminal_quest = "terminal_quest:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov"]
+
+[tool.setuptools.packages.find]
+include = ["terminal_quest*"]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[tool.setuptools.package-data]
+terminal_quest = ["mds/*", "mds/.level*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
