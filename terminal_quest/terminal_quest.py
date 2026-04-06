@@ -9,6 +9,8 @@ import string
 import sys
 import textwrap
 
+import pyfiglet
+
 from .pizzazz import banner, fini
 from .compat import blue, bold, yellow
 
@@ -176,20 +178,13 @@ def main() :
     create_mds('level5',lpath)
 
     # write out each line to a different file
-    level6_dir = '.vrkalp'
-    code = [
-         r"                     _              _         "
-        ,r"                    | |            | |        "
-        ,r"     __   __  _ __  | | __   __ _  | |  _ __  "
-        ,r"     \ \ / / | '__| | |/ /  / _` | | | | '_ \ "
-        ,r"  _   \ V /  | |    |   <  | (_| | | | | |_) |"
-        ,r" (_)   \_/   |_|    |_|\_\  \__,_| |_| | .__/ "
-        ,r"                                       | |    "
-        ,r"                                       |_|    "
-    ]
-    code = random.sample(code,len(code))
+    random_word = ''.join(random.choices(string.ascii_lowercase, k=6))
+    level6_dir = '.' + random_word
+    art = pyfiglet.figlet_format(level6_dir, font="big")
+    code = [line for line in art.split('\n') if line.strip()]
+    code = random.sample(code, len(code))
     for fn,line in zip(string.ascii_uppercase,code) :
-        open(opj(lpath,fn+'.txt'),'w').write(line+'\n')
+        open(opj(lpath,fn+'.txt'),'w').write(fn+'.txt  '+line+'\n')
 
     # create a bunch of random hidden directories
     for _ in range(999) :
