@@ -13,6 +13,8 @@ globbing (`*` character), and output redirection (`>` character).
 
 ## Installation and Use ##
 
+**Requirements:** [Python](https://www.python.org/) and `pip` must be installed on your system. If you're starting from scratch, the [official Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) is a good place to start.
+
 Install from [PyPI](https://pypi.org/project/terminal-quest/) with `pip`:
 
 ```
