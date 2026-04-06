@@ -9,8 +9,8 @@ import string
 import sys
 import textwrap
 
-from .pizzazz import fini
-from .compat import Text, blue, bold, yellow
+from .pizzazz import banner, fini
+from .compat import blue, bold, yellow
 
 opj = os.path.join
 
@@ -57,10 +57,7 @@ def rndchr(n) :
 
 def main() :
 
-    print()
-    print(Text('Terminal',skew=5))
-    print(Text('   Quest',skew=5))
-    print()
+    banner()
     print(bold(yellow('Your personal quest is being created right now, please wait.')))
     print()
 

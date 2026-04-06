@@ -4,7 +4,9 @@ import sys
 import termios
 from time import sleep
 
-from .compat import TerminalInfo, Text, bg256, bold, green
+import pyfiglet
+
+from .compat import TerminalInfo, bg256, bold, green
 
 try:
     _terminal_fd = sys.stdin.fileno()
@@ -70,17 +72,23 @@ def type_texts(texts,speed=0.03,delay=1):
             write(' ')
     sleep(delay)
 
-banner_color = '#786d5f'
-def banner() :
+# Taglines shown under the banner — add more here whenever inspiration strikes
+TAGLINES = [
+    "it's dangerous to go alone. take a terminal.",
+    "rm -rf your fears.",
+    "sudo make me a sandwich.",
+    "there's no place like 127.0.0.1.",
+    "it works on my machine.",
+    "have you tried turning it off and on again?",
+    "undefined is not a function.",
+    "git blame someone else.",
+]
 
-    term = TerminalInfo()
-
-    voffset = 4
-    rect(0,int(term.height/voffset-2),term.width,int(term.height/voffset+26),'#000')
-    move(0,int(term.height/voffset))
-    write(Text(' terminal',skew=5,shadow=True,color=banner_color))
-    move(0,int(term.height/voffset+12))
-    write(Text('  quest',skew=5,shadow=True,color=banner_color))
+def banner():
+    art = pyfiglet.figlet_format("terminal quest", font="slant")
+    write(bold(art))
+    tagline = random.choice(TAGLINES)
+    write(f"  {tagline}\n\n")
 
 def dazzle() :
 
