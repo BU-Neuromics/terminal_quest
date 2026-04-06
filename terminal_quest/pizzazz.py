@@ -74,14 +74,18 @@ def type_texts(texts,speed=0.03,delay=1):
 
 # Taglines shown under the banner — add more here whenever inspiration strikes
 TAGLINES = [
-    "it's dangerous to go alone. take a terminal.",
-    "rm -rf your fears.",
-    "sudo make me a sandwich.",
-    "there's no place like 127.0.0.1.",
-    "it works on my machine.",
-    "have you tried turning it off and on again?",
-    "undefined is not a function.",
-    "git blame someone else.",
+    "the black screen is a feature, not a bug.",
+    "your mouse is on vacation. it'll be fine.",
+    "click nothing. type everything.",
+    "the cursor is blinking encouragingly.",
+    "you're basically a hacker now.",
+    "no icons were harmed in the making of this terminal.",
+    "boldly going where no mouse has gone before.",
+    "this is not the end. unless you type 'exit'.",
+    "every great journey begins with a single keystroke.",
+    "warning: may cause uncontrollable typing.",
+    "you can't accidentally close a tab here.",
+    "where there's a terminal, there's a way.",
 ]
 
 def banner():
